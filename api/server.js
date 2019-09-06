@@ -3,7 +3,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
 import bodyParser from 'body-parser';
-import {register, listUsers} from './auth'
+import {register, listUsers, login} from './auth'
 
 dotenv.config();
 const port = process.env.PORT||3000;
@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 
 app.post('/api/register', register);
 app.get('/api/users', listUsers);
+app.post('/api/login', login);
 
 const DIST = path.resolve(__dirname, '..', 'blog');
 app.use(express.static(DIST));
