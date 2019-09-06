@@ -1,0 +1,17 @@
+<div class="nav">
+    <div class="left">
+       <span>Golden</span>
+    </div>
+    <div class="right">
+        <form>
+            <label>
+                <input [(ngModel)]="login.email" name="email" placeholder="email" type="email" />
+            </label>
+            <label>
+                <input [(ngModel)]="login.password" name="password" placeholder="password" type="password"/>
+            </label>
+            <input (click)="loginSubmit()" class="button" type="submit" value="Login" />
+            <button class="button">Register</button>
+        </form>
+    </div>
+</div>
