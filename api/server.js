@@ -1,6 +1,7 @@
 import Users from "./database/users";
 
 const express = require('express');
+require("@babel/polyfill");
 const path = require('path');
 const dotenv = require('dotenv');
 import bodyParser from 'body-parser';
