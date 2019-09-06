@@ -11,7 +11,13 @@
                 <input [(ngModel)]="login.password" name="password" placeholder="password" type="password"/>
             </label>
             <input (click)="loginSubmit()" class="button" type="submit" value="Login" />
-            <button class="button">Register</button>
+            <button (click)="openRegister()" class="button">Register</button>
         </form>
+    </div>
+</div>
+<div id="modal">
+    <div id="body" class="body">
+        <div><button class="close" (click)="closeModal()">&times;</button></div>
+        <app-register *ngIf="modalComponent === 'register'"></app-register>
     </div>
 </div>

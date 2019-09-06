@@ -17,4 +17,8 @@ export class HttpRequestService {
   getUsers(): Observable<any> {
     return this.http.get('/api/users');
   }
+
+  register(data): Observable<any> {
+    return this.http.post('/api/register', data);
+  }
 }

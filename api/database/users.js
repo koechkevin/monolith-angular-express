@@ -11,7 +11,9 @@ class Users {
         }
         return reject(error);
       }
-      return resolve(JSON.parse(response).users)
+      const usersFromDb = JSON.parse(response).users;
+      const users = usersFromDb.map(user => ({...user, password: '[Hidden]'}));
+      return resolve(users)
     })}
     )
   };

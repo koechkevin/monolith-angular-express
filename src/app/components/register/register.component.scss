@@ -1,0 +1,29 @@
+.register {
+  padding-left: 2em;
+  padding-right: 2em;
+  .head {
+    text-align: center;
+  }
+  .form {
+    .input {
+      margin-bottom: 1em;
+    }
+    .submit {
+      float: right;
+      cursor: pointer;
+      background-color: gold;
+      outline: none;
+      color: white;
+      border-radius: 2px;
+      border: none;
+      padding: 1em;
+    }
+    input {
+      width: 100%;
+      border-radius: 2px;
+      height: 30px;
+      outline: none;
+      border: 1px solid lightgrey;
+    }
+  }
+}

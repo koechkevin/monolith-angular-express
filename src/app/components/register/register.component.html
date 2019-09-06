@@ -1,0 +1,35 @@
+<div class="register">
+    <div class="head">
+        <h1>Register</h1>
+    </div>
+        <div class="form">
+            <div class="input">
+                <label>
+                    Name
+                    <br />
+                    <input [(ngModel)]="model.name" type="text"  />
+                </label>
+            </div>
+            <div class="input">
+                <label>
+                    Email
+                    <br />
+                    <input  [(ngModel)]="model.email" type="email"  />
+                </label>
+            </div>
+            <div class="input">
+                <label>
+                    Password
+                    <br />
+                    <input  [(ngModel)]="model.password" id="password" [type]="pass" />
+                    <span>
+                        <input  type="checkbox" (click)="viewPassword()">
+                    </span>
+                    <span style="font-size: 12px">{{ pass === 'password'?'View Password':'Hide Password'}}</span>
+                </label>
+            </div>
+            <div>
+                <button (click)="register()" class="submit">Register</button>
+            </div>
+        </div>
+</div>
