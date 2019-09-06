@@ -28,7 +28,7 @@ app.get('/api/users', async (req, res) => {
 });
 
 // Folder path where the bundled files reside in.
-const DIST = path.resolve(__dirname, '..', 'dist/blog');
+const DIST = path.resolve(__dirname, '..', 'blog');
 
 // Enable our express server to serve bundled static files.
 app.use(express.static(DIST));
