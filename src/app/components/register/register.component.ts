@@ -9,6 +9,7 @@ import {HttpRequestService} from '../../services/http-request.service';
 export class RegisterComponent implements OnInit {
   pass  = 'password';
   model = {
+      email: '', password: '', name: ''
   };
 constructor(
     private apiCall: HttpRequestService
@@ -25,7 +26,9 @@ constructor(
     this.apiCall.register(this.model)
         .subscribe(res => {
           document.getElementById('modal').style.display = 'none';
-          this.model = {};
+          this.model = {
+              email: '', password: '', name: ''
+          };
           console.log(res);
         });
   }
