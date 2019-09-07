@@ -1,34 +1,18 @@
-import fs from "fs";
+import database from './firebase';
 
 class Users {
   database = `api/database/users.json`;
+  ref = database.ref('data/users');
   getUsers = () => {
-    return new Promise((resolve, reject) => {
-      return fs.readFile(this.database, 'utf8',(error, response) => {
-      if (error) {
-        if (error.code === 'ENOENT') {
-         return resolve([]);
-        }
-        return reject(error);
-      }
-      const usersFromDb = JSON.parse(response).users;
-      return resolve(usersFromDb)
-    })}
-    )
+    return this.ref.once('value').then(data => Object.values(data.val()));
+  };
+
+  getUser = (id) => {
+    return this.ref.child(id).once('value').then(user => user.val());
   };
 
   createUser = (user) => {
-    return new Promise((resolve, reject) => {
-      return this.getUsers().then(users => {
-        users.push(user);
-        return fs.writeFile(this.database, JSON.stringify({users}), (error) => {
-          if(error){
-            return reject(error)
-          }
-         return resolve(user);
-        });
-      });
-    });
+    return this.ref.child(user.id).set(user).then(() => user);
   }
 }
 

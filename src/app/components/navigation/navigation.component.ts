@@ -16,9 +16,11 @@ export class NavigationComponent implements OnInit, OnDestroy {
   };
   modalComponent;
   modal;
+  isLoggedIn: boolean;
 
   ngOnInit() {
     this.httpRequest.getUsers().subscribe(users => console.log(users));
+    this.isLoggedIn = !!localStorage.getItem('token');
     document.addEventListener('click', (e) => {
       const modal = document.getElementById('modal');
       this.modal = modal;
@@ -36,7 +38,8 @@ export class NavigationComponent implements OnInit, OnDestroy {
   loginSubmit() {
     this.httpRequest.login(this.login)
         .subscribe((res) => {
-          console.log(res);
+          localStorage.setItem('token', res.token);
+          this.isLoggedIn = true;
         });
     this.login = {
       password: '',

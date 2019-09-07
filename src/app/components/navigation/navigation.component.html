@@ -3,7 +3,7 @@
        <span>Golden</span>
     </div>
     <div class="right">
-        <form>
+        <form *ngIf="!isLoggedIn">
             <label>
                 <input [(ngModel)]="login.email" name="email" placeholder="email" type="email" />
             </label>
@@ -13,6 +13,9 @@
             <input (click)="loginSubmit()" class="button" type="submit" value="Login" />
             <button (click)="openRegister()" class="button">Register</button>
         </form>
+        <div *ngIf="isLoggedIn" class="image">
+            KK
+        </div>
     </div>
 </div>
 <div id="modal">

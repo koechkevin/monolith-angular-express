@@ -25,10 +25,10 @@ constructor(
   register() {
     this.apiCall.register(this.model)
         .subscribe(res => {
-          document.getElementById('modal').style.display = 'none';
-          this.model = {
-              email: '', password: '', name: ''
-          };
+          // document.getElementById('modal').style.display = 'none';
+          // this.model = {
+          //     email: '', password: '', name: ''
+          // };
           console.log(res);
         });
   }
