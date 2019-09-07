@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "transpile": "pwd && babel api --out-dir dist/api -s",
+    "transpile": "babel api --out-dir dist/api -s",
     "dev:back": "nodemon --exec babel-node api/server.js",
     "start:dev": "ng serve  --proxy-config proxy.conf.js",
     "start": "node dist/api/server.js",
-    "build": "npm run transpile && ng build --aot",
+    "build": "npm run transpile && ng build --prod --aot",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
