@@ -10,6 +10,7 @@ import {Subscription} from 'rxjs';
 export class HomeComponent implements OnInit, OnDestroy {
   loggedIn: boolean = !!localStorage.getItem('token');
   sub: Subscription;
+  summary: any;
 
   constructor(
       private api: HttpRequestService
@@ -27,8 +28,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   save(e) {
-    if (e.charCode === 13) {
-      console.log(e.target.value);
+    if (e.charCode === 13 && this.summary.trim()) {
+      console.log(e);
+      this.summary = undefined;
     }
   }
 }
