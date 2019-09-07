@@ -10,7 +10,7 @@ export const register = async (req, res) => {
   const password = await passwordObject.createPassword();
   const newUser = {...req.body, id, password};
   const user = await db.createUser(newUser);
-  delete user.password;
+  user.password = '[Hidden]';
   res.status(200).json(user);
 };
 

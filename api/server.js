@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import bodyParser from 'body-parser';
 import {register, listUsers, login} from './auth'
+import {validateNewUser} from "./middlewares";
 
 dotenv.config();
 const port = process.env.PORT||3000;
@@ -12,7 +13,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.post('/api/register', register);
+app.post('/api/register', validateNewUser, register);
 app.get('/api/users', listUsers);
 app.post('/api/login', login);
 
