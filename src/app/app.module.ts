@@ -10,12 +10,14 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {RegisterComponent} from './components/register/register.component';
 import {ProfileComponent} from './components/profile/profile.component';
+import {HomeComponent} from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfileComponent,
     NavigationComponent,
+    HomeComponent,
     RegisterComponent
   ],
     imports: [

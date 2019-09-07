@@ -17,7 +17,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   };
   modalComponent;
   modal;
-  isLoggedIn: boolean;
+  isLoggedIn: boolean = !!localStorage.getItem('token');
   subscription: Subscription;
 
   ngOnInit() {

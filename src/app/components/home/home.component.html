@@ -1,0 +1,16 @@
+<div *ngIf="!loggedIn" class="home">
+    <app-register></app-register>
+</div>
+<div *ngIf="loggedIn" class="board">
+    <div class="to-do">
+        <div style="text-align: center; position: sticky; top: 0; background-color: white"><span style="font-size: 26px; color: grey">To Do</span></div>
+        <div class="add">
+            <label>
+                <textarea (keypress)="save($event)"></textarea>
+            </label>
+        </div>
+    </div>
+    <div class="done">
+        <div style="text-align: center; position: sticky; top: 0; background-color: white"><span style="font-size: 26px; color: grey">Done</span></div>
+    </div>
+</div>

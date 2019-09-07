@@ -6,6 +6,8 @@
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   height: 70px;
   display: flex;
+  z-index: 99;
+  background-color: white;
   .right {
     width: 50vw;
     min-width: 400px;
