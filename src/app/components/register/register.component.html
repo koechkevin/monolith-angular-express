@@ -7,21 +7,21 @@
                 <label>
                     Name
                     <br />
-                    <input [(ngModel)]="model.name" type="text"  />
+                    <input #name="ngModel" [(ngModel)]="model.name" type="text" minlength="7" required />
                 </label>
             </div>
             <div class="input">
                 <label>
                     Email
                     <br />
-                    <input  [(ngModel)]="model.email" type="email"  />
+                    <input #email="ngModel" [(ngModel)]="model.email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required />
                 </label>
             </div>
             <div class="input">
                 <label>
                     Password
                     <br />
-                    <input  [(ngModel)]="model.password" id="password" [type]="pass" />
+                    <input #password="ngModel" [(ngModel)]="model.password" minlength="7" id="password" required [type]="pass" />
                     <span>
                         <input  type="checkbox" (click)="viewPassword()">
                     </span>
@@ -29,7 +29,7 @@
                 </label>
             </div>
             <div>
-                <button (click)="register()" class="submit">Register</button>
+                <button [disabled]="password.invalid || email.invalid || name.invalid" (click)="register()" class="submit">Register</button>
             </div>
         </div>
 </div>

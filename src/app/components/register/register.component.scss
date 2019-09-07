@@ -8,6 +8,10 @@
     .input {
       margin-bottom: 1em;
     }
+    button:disabled {
+      pointer-events: none;
+      background-color: lightgrey;
+    }
     .submit {
       float: right;
       cursor: pointer;
@@ -25,5 +29,15 @@
       outline: none;
       border: 1px solid lightgrey;
     }
+  }
+}
+.ng-valid[required], .ng-valid.required  {
+  border-right: 5px solid limegreen !important;
+  border-radius: 4px !important;
+}
+.ng-invalid:not(form)  {
+  &.ng-dirty {
+    border-right: 5px solid red !important;
+    border-radius: 4px !important;
   }
 }
