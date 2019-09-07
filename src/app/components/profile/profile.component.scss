@@ -1,0 +1,50 @@
+.profile {
+  position: sticky;
+  top: 10%;
+  margin: auto;
+  min-width: 600px;
+  width: 80%;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  padding: 1em;
+  .head {
+    text-align: center;
+    color: lightgrey;
+  }
+  button {
+    padding: 5px 10px;
+    float: right;
+    border-radius: 3px;
+    background-color: gold;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .body{
+    .row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1em;
+      padding: 0 0 1em;
+      .button {
+        margin-bottom: 1em;
+      }
+      input {
+        outline: none;
+        border-radius: 3px;
+        border: 1px solid lightgrey;
+        min-width: 200px;
+        height: 25px;
+        color: grey;
+        font-size: 16px;
+      }
+      .view {
+        min-width: 200px;
+        color: grey;
+        height: 25px;
+      }
+    }
+  }
+}

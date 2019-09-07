@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import Users from "./database/users";
+import database from "./database/firebase";
 
 class Password {
   salt = 10;
@@ -20,17 +21,23 @@ class Password {
 
   validatePassword(email){
     const db = new Users();
-    return db.getUsers().then(users => {
-      const user = users.find(e => e.email === email);
-      if (!user) {
-        return false
+    const mapRef = database.ref('data/emails');
+    const encodedEmail = encodeURIComponent(email).replace(/\./g, '%2E');
+    return mapRef.child(encodedEmail).once('value').then(data => {
+      if (data && data.val()) {
+        return db.getUser(data.val()).then(user => {
+          if (!user) {
+            return false
+          }
+          return bcrypt.compare(this.password, user.password)
+            .then((res) => {
+              if (res) return {...user, id: data.val()};
+              return false;
+            })
+        });
       }
-      return bcrypt.compare(this.password, user.password)
-        .then((res) => {
-          if (res) return user;
-          return false;
-        })
-    })
+      return false;
+    });
   }
 }
 

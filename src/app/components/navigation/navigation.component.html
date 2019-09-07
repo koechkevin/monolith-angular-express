@@ -1,6 +1,6 @@
 <div class="nav">
     <div class="left">
-       <span>Tracker</span>
+       <span style="outline: none; cursor: pointer" routerLink="/">Tracker</span>
     </div>
     <div class="right">
         <form *ngIf="!isLoggedIn">
@@ -13,9 +13,19 @@
             <input (click)="loginSubmit()" class="button" type="submit" value="Login" />
             <button (click)="openRegister()" class="button">Register</button>
         </form>
-        <div *ngIf="isLoggedIn" class="image">
-            KK
+        <div style="cursor: pointer; border: 2px solid chocolate" [matMenuTriggerFor]="appMenu" *ngIf="isLoggedIn" class="image">
+            K
         </div>
+        <mat-menu #appMenu="matMenu">
+            <button routerLink="/profile" mat-menu-item>
+                <mat-icon>account_circle</mat-icon>
+                Profile
+            </button>
+            <button (click)="logout()" mat-menu-item>
+                <mat-icon>power_settings_new</mat-icon>
+                Logout
+            </button>
+        </mat-menu>
     </div>
 </div>
 <div id="modal">

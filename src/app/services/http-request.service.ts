@@ -21,4 +21,22 @@ export class HttpRequestService {
   register(data): Observable<any> {
     return this.http.post('/api/register', data);
   }
+
+  getProfileData(): Observable<any> {
+    return this.http.get('/api/profile');
+  }
+
+  updateProfile(data: object): Observable<any> {
+    return this.http.post('/api/profile', data);
+  }
+
+  loggedIn(): Observable<boolean> {
+    return new Observable(subscriber => {
+      const interval = setInterval(() => {
+        const isLoggedIn = !!localStorage.getItem('token');
+        subscriber.next(isLoggedIn);
+        }, 1000);
+      return () => clearInterval(interval);
+    });
+  }
 }

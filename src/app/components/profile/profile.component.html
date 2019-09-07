@@ -1,0 +1,39 @@
+<div class="profile">
+    <div class="head">
+        <h1>Profile</h1>
+    </div>
+    <div class="body">
+        <div class="row">
+            <span>Id</span>
+            <div>
+                <div class="view">{{ profile && profile.id }}</div>
+            </div>
+        </div>
+        <div class="row">
+            <span>Name</span>
+            <div>
+                <label *ngIf="isEditing"><input [(ngModel)]="profile.name" type="text"></label>
+                <div class="view" *ngIf="!isEditing">{{ profile && profile.name }}</div>
+            </div>
+        </div>
+        <div class="row">
+            <span>Email</span>
+            <div>
+                <label *ngIf="isEditing"><input [(ngModel)]="profile.email" type="text"></label>
+                <div class="view" *ngIf="!isEditing">{{ profile && profile.email }}</div>
+            </div>
+        </div>
+        <div class="row"><span>Registration Date</span>
+            <div class="view">5th Aug 2019</div>
+        </div>
+        <div class="row">
+            <span>Active Tasks</span>
+            <div class="view">5</div>
+        </div>
+        <div class="button">
+            <button (click)="!isEditing? toggle():update()">{{isEditing?'Save':'Edit'}}</button>
+            <button style="margin-right: 1em" *ngIf="isEditing" (click)="cancel()">Cancel</button>
+        </div>
+        <div class="row"></div>
+    </div>
+</div>

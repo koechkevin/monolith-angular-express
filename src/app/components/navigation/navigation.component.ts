@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HttpRequestService} from '../../services/http-request.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-navigation',
@@ -8,7 +9,7 @@ import {HttpRequestService} from '../../services/http-request.service';
 })
 export class NavigationComponent implements OnInit, OnDestroy {
   constructor(
-      private httpRequest: HttpRequestService
+      private httpRequest: HttpRequestService,
   ) { }
   login = {
     password: '',
@@ -17,10 +18,10 @@ export class NavigationComponent implements OnInit, OnDestroy {
   modalComponent;
   modal;
   isLoggedIn: boolean;
+  subscription: Subscription;
 
   ngOnInit() {
-    this.httpRequest.getUsers().subscribe(users => console.log(users));
-    this.isLoggedIn = !!localStorage.getItem('token');
+    this.subscription = this.httpRequest.loggedIn().subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
     document.addEventListener('click', (e) => {
       const modal = document.getElementById('modal');
       this.modal = modal;
@@ -32,6 +33,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     document.removeEventListener('click', () => {});
+    this.subscription.unsubscribe();
   }
 
 
@@ -55,5 +57,10 @@ export class NavigationComponent implements OnInit, OnDestroy {
     this.modalComponent = 'register';
     const modal = document.getElementById('modal');
     modal.style.display = 'block';
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.isLoggedIn = false;
   }
 }
